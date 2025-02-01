@@ -1,25 +1,15 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import PropTypes from 'prop-types'
 import 'leaflet/dist/leaflet.css'
-import { Icon } from 'leaflet'
-import markerIcon from 'leaflet/dist/images/marker-icon.png'
-import markerShadow from 'leaflet/dist/images/marker-shadow.png'
 
 const Map = ({ center, ipData }) => {
-
-  const defaultIcon = new Icon({
-    iconUrl: markerIcon,
-    shadowUrl: markerShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
-})
   return (
     <MapContainer center={center} zoom={13} style={{ height: '100vh', width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       />
-      <Marker position={center} icon={defaultIcon}>
+      <Marker position={center}>
         <Popup>
           {ipData.location.city}, {ipData.location.country}<br />
           IP: {ipData.ip}
